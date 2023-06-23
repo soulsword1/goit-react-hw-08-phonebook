@@ -1,29 +1,46 @@
-import ContactForm from './ContactForm';
-import ContactList from './ContactList';
-import Layout from './Layout/Layout';
-import Filter from './Filter';
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { fetchContacts } from "redux/operations";
-import { getError, getIsLoading } from "redux/selectors";
+import { useDispatch } from "react-redux";
+import { useEffect, lazy } from "react";
+import { Route, Routes } from 'react-router-dom';
+import { fetchContacts } from "redux/contacts/operations";
+import Layout from './Layout';
+import { PrivateRoute } from './PrivateRoute';
+import { RestrictedRoute } from './RestrictedRoute';
 
-export const App = () => {
+const HomePage = lazy(() => import('../pages/Home'));
+const RegisterPage = lazy(() => import('../pages/Register'));
+const LoginPage = lazy(() => import('../pages/Login'));
+const ContactPage = lazy(() => import('../pages/Contacts'));
+
+export default function App(){
   const dispatch = useDispatch();
-  const isLoading = useSelector(getIsLoading);
-  const error = useSelector(getError);
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
   return (
-    <Layout>
-        <h1>Phonebook</h1>
-        <ContactForm />
-        {isLoading && !error && <b>Adding contact to phonebook...</b>}
-        <h2>Contacts</h2>
-        <Filter />
-        <ContactList />
-      </Layout>
+    <Routes>
+    <Route path="/" element={<Layout />}>
+      <Route index element={<HomePage />} />
+      <Route
+        path="/register"
+        element={
+          <RestrictedRoute redirectTo="/contacts" component={<RegisterPage />} />
+        }
+      />
+      <Route
+        path="/login"
+        element={
+          <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
+        }
+      />
+      <Route
+        path="/contacts"
+        element={
+          <PrivateRoute redirectTo="/login" component={<ContactPage />} />
+        }
+      />
+    </Route>
+  </Routes>
   );
 };

@@ -1,8 +1,9 @@
-import { List } from './ContactList.styled';
+// import { List } from './ContactList.styled';
+import { Table, TableTh } from './ContactList.styled';
 import ContactListItem from '../ContactListItem';
 import { useSelector } from 'react-redux';
-import { getContacts } from '../../redux/selectors';
-import { getFilter } from '../../redux/selectors';
+import { getContacts } from '../../redux/contacts/selectors';
+import { getFilter } from '../../redux/filter/selectors';
 
 const getVisibleContacts = (contacts, contactsFilter) =>
   contactsFilter
@@ -20,10 +21,27 @@ export default function ContactList() {
     normalizedContactsFilter
   );
   return (
-    <List>
+    <Table>
+      <thead>
+      <tr>
+      <TableTh>Name</TableTh>
+      <TableTh>Phone</TableTh>
+      <TableTh>Action</TableTh>
+      </tr>
+      </thead>
+      <tbody>
       {visibleContacts.map(contact => (
         <ContactListItem key={contact.id} contact={contact} />
       ))}
-    </List>
+      </tbody>
+    </Table>
   );
 }
+
+// return (
+//   <List>
+//     {visibleContacts.map(contact => (
+//       <ContactListItem key={contact.id} contact={contact} />
+//     ))}
+//   </List>
+// );

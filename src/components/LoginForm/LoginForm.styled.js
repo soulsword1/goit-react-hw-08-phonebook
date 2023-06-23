@@ -4,15 +4,10 @@ export const Form = styled.form`
   padding: 20px;
   width: 200px;
   min-height: 120px;
+  margin: 40px auto 0px auto;
 
   border: 1.5px solid #647c90;
   border-radius: 5px;
-`;
-
-export const FormGroup = styled.div`
-  &:not(:last-child) {
-    padding-bottom: 10px;
-  }
 `;
 
 export const FormLabel = styled.label`
@@ -42,6 +37,7 @@ export const FormSubmitBtn = styled.button`
   display: block;
   margin: 0 auto;
   padding: 10px;
+  width: 80px;
 
   cursor: pointer;
   color: #fff;

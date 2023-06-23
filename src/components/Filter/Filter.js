@@ -1,4 +1,4 @@
-import { setFilter } from 'redux/filterSlice';
+import { setFilter } from 'redux/filter/slice';
 import { useDispatch } from 'react-redux';
 import { FilterForm, FilterLabel, FilterInput } from './Filter.styled';
 

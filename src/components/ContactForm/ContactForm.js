@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addContact } from 'redux/operations';
+import { addContact } from 'redux/contacts/operations';
 import { useSelector } from 'react-redux';
-import { getContacts } from 'redux/selectors';
+import { getContacts } from 'redux/contacts/selectors';
 import {
   Form,
   FormGroup,
@@ -19,15 +19,15 @@ export default function ContactForm() {
 
   let contact = {};
 
-  const createContact = (name, phone) => {
+  const createContact = (name, number) => {
       contact = {
         name,
-        phone
+        number
       }
   }
 
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
 
   const handleChange = e => {
     const { name, value } = e.currentTarget;
@@ -36,8 +36,8 @@ export default function ContactForm() {
       case 'name':
         setName(value);
         break;
-      case 'phone':
-        setPhone(value);
+      case 'number':
+        setNumber(value);
         break;
       default:
         return;
@@ -51,7 +51,7 @@ export default function ContactForm() {
       alert(`${name} is already in contacts`);
       return;
     }
-    createContact(name, phone);
+    createContact(name, number);
     dispatch(addContact(contact));
     console.log(contact);
     reset();
@@ -59,7 +59,7 @@ export default function ContactForm() {
 
   const reset = () => {
     setName('');
-    setPhone('');
+    setNumber('');
   };
 
   return (
@@ -80,13 +80,13 @@ export default function ContactForm() {
       </FormGroup>
       <FormGroup>
         <FormLabel>
-          Phone:
+          Number:
           <FormInput
             type="tel"
-            name="phone"
-            value={phone}
+            name="number"
+            value={number}
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Phone phone must be digits and can contain spaces, dashes, parentheses and can start with +"
+            title="number number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
             onChange={handleChange}
           />
