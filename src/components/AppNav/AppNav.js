@@ -1,5 +1,5 @@
 import Navigation from '../Navigation';
-import Menu from '../Menu';
+import UserMenu from '../UserMenu';
 import AuthNav from '../AuthNav';
 import { useAuth } from 'hooks';
 import { Header } from './AppNav.styled';
@@ -10,7 +10,7 @@ export default function AppNav() {
   return (
     <Header>
       <Navigation />
-      {isLoggedIn ? <Menu /> : <AuthNav />}
+      {isLoggedIn ? <UserMenu /> : <AuthNav />}
     </Header>
   );
 };

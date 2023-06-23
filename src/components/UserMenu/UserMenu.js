@@ -1,9 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/operations';
 import { useAuth } from 'hooks';
-import { Wrapper, LogoutBtn, Username } from './Menu.styled';
+import { Wrapper, LogoutBtn, Username } from './UserMenu.styled';
 
-export default function Menu(){
+export default function UserMenu(){
   const dispatch = useDispatch();
   const { user } = useAuth();
 
