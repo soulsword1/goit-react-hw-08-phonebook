@@ -12,7 +12,6 @@ const setAuthHeader = token => {
 const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
-
 /*
  * POST @ /users/signup
  * body: { name, email, password }

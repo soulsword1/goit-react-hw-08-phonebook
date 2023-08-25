@@ -1,58 +1,88 @@
 import styled from '@emotion/styled';
 
 export const Form = styled.form`
-  padding: 20px;
-  width: 200px;
-  min-height: 120px;
-  margin: 40px auto 0px auto;
+  width: 335px;
+  min-height: 300px;
+  margin: 0 auto;
+  padding: 40px;
 
-  border: 1.5px solid #647c90;
-  border-radius: 5px;
-`;
+  background: #151515;
+  color: #fff;
 
-export const FormGroup = styled.div`
-  &:not(:last-child) {
-    padding-bottom: 10px;
+  border: none;
+  border-radius: 8px;
+
+  @media (min-width: 768px) {
+    width: 424px;
   }
 `;
 
+export const RegistrationLink = styled.a`
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 30px;
+
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+`;
+
+export const LogInLink = styled.a`
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  opacity: 30%;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    opacity: 100%;
+  }
+`;
+
+export const FormGroup = styled.div``;
+
 export const FormLabel = styled.label`
-font-weight: 700;
-color: #647c90;
-}
+  display: inline-block;
+  margin-bottom: 25px;
+  width: 100%;
+  font-weight: 700;
+  color: #647c90;
 `;
 
 export const FormInput = styled.input`
   box-sizing: border-box;
-  margin-top: 5px;
   padding: 5px 0 5px 10px;
 
   width: 100%;
+  height: 49px;
   outline: none;
-
-  &:focus {
-    outline: 1.5px solid #647c90;
-  }
-
-  &:last-child {
-    margin-bottom: 10px;
-  }
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background: #1f1f1f;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
 `;
 
 export const FormSubmitBtn = styled.button`
   display: block;
   margin: 0 auto;
   padding: 10px;
-  width: 80px;
+  width: 100%;
+  height: 49px;
 
   cursor: pointer;
-  color: #fff;
-  background-color: #647c90;
-  border-radius: 5px;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0.02em;
+  background-color: #bedbb0;
+  border-radius: 8px;
   border: 1px solid transparent;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:not(:last-child) {
     margin-right: 10px;
@@ -60,8 +90,6 @@ export const FormSubmitBtn = styled.button`
 
   &:hover,
   &:focus {
-    color: #647c90;
-    background-color: #fff;
-    border: 1px solid #647c90;
+    color: #fff;
   }
 `;

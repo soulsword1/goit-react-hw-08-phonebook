@@ -5,6 +5,8 @@ import {
   FormLabel,
   FormInput,
   FormSubmitBtn,
+  RegistrationLink,
+  LogInLink
 } from './RegisterForm.styled';
 
 export const RegisterForm = () => {
@@ -25,19 +27,17 @@ export const RegisterForm = () => {
 
   return (
     <Form onSubmit={handleSubmit} autoComplete="off">
+      <RegistrationLink>Registration</RegistrationLink> <LogInLink>Log In</LogInLink>
       <FormLabel>
-        Username
-        <FormInput type="text" name="name" />
+        <FormInput type="name" name="name" placeholder="Enter your name"/>
       </FormLabel>
       <FormLabel>
-        Email
-        <FormInput type="email" name="email" />
+        <FormInput type="email" name="email" placeholder="Enter your email"/>
       </FormLabel>
       <FormLabel>
-        Password
-        <FormInput type="password" name="password" />
+        <FormInput type="password" name="password" placeholder="Create a password"/>
       </FormLabel>
-      <FormSubmitBtn type="submit">Register</FormSubmitBtn>
+      <FormSubmitBtn type="submit">Register Now</FormSubmitBtn>
     </Form>
   );
 };
